@@ -3,22 +3,17 @@ import math
 M = int(input('число строк '))
 N = int(input('число столбцов '))
 
-test_matrix = [[5500, 120, 10, 5],
-               [2000, 30, 8, 3],
-               [4000, 89, 1, 10],
-               [2750, 61, 5, 4],
-               [4500, 94, 7, 8]]
+test_matrix = [[250, 16, 12, 5],
+               [200, 16, 8, 3],
+               [300, 32, 16, 4],
+               [275, 32, 8, 4],
+               [225, 16, 16, 2]]
 
-test_weightage = [0.4, 0.3, 0.2, 0.2]
+test_weightage = [0.35, 0.25, 0.25, 0.15]
+
 
 test_sign = [0.0, 1.0, 1.0, 1.0]
 
-#print("Введите значения в матрицу")
-#input_matrix = [[input() for _ in range(N)] for _ in range(M)]
-#print("Введите вес для всех столбцов")
-#input_weightage = [input() for _ in range(N)]
-#print("Введите определяющие значения")
-#input_sign = [input() for _ in range(N)]
 
 #max - 1
 #min - 0
@@ -26,7 +21,6 @@ test_sign = [0.0, 1.0, 1.0, 1.0]
 def calculates(input_matrix, input_weightage, input_sign):
     normalised_matrix = []
     temp = []
-    matr_sum = []
     square_matrix = []
     sqrt_sum = []
     weighted_matrix = []
@@ -35,6 +29,11 @@ def calculates(input_matrix, input_weightage, input_sign):
     si_pos = []
     si_neg = []
     pi = []
+    finish_list = []
+
+
+    print("Начальная матрица:")
+    print(input_matrix)
 
     #calc sum
 
@@ -67,6 +66,9 @@ def calculates(input_matrix, input_weightage, input_sign):
         weighted_matrix.append(temp.copy())
         temp.clear()
 
+    print("\nВзвешенная матрица:")
+    print(weighted_matrix)
+
     #calc V sign
     for i in range(len(weighted_matrix)):
         if input_sign[i] == 1.0:
@@ -79,7 +81,7 @@ def calculates(input_matrix, input_weightage, input_sign):
         if input_sign[i] == 0.0:
             v_neg.append(max(weighted_matrix[i]))
 
-    print(weighted_matrix)
+
 
     summ = 0
     #calc Si pos
@@ -89,22 +91,36 @@ def calculates(input_matrix, input_weightage, input_sign):
         si_pos.append(math.sqrt(summ))
         summ = 0
 
+    print("\nSi positive:")
+    print(si_pos)
+
     for i in range(M):
         for j in range(N):
             summ += (weighted_matrix[j][i] - v_neg[j])**2
         si_neg.append(math.sqrt(summ))
         summ = 0
 
-    for
+    print("\nSi negative:")
+    print(si_neg)
+
+    for i in range(len(si_neg)):
+        pi.append(si_neg[i] / (si_pos[i] + si_neg[i]))
+
+    K = len(pi)
+    print("\nКонечный список:")
+    print(pi)
+
+    for i in range(K - 1):
+        for j in range(K - i - 1):
+            if pi[j] > pi[j + 1]:
+                pi[j], pi[j + 1] = pi[j + 1], pi[j]
+
+    print("\nКонечный список по убыванию:")
+    print(list(reversed(pi)))
 
 
-
-
-
-    return (si_neg)
 
 
 
 if __name__ == '__main__':
-    #print(input_matrix[1][1])
-    print(calculates(test_matrix, test_weightage, test_sign))
+    calculates(test_matrix, test_weightage, test_sign)
