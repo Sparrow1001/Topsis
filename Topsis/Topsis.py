@@ -28,7 +28,6 @@ def calculates(input_matrix, input_weightage, input_sign):
     si_pos = []
     si_neg = []
     pi = []
-    finish_list = []
 
     print("Начальная матрица:")
     print(input_matrix)
