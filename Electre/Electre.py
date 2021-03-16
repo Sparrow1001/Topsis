@@ -16,7 +16,7 @@ test_weightage = [0.35, 0.25, 0.25, 0.15, 0.15]
 # min - 0
 
 
-def calculates(input_matrix, input_weightage, input_sign):
+def calculates(input_matrix, input_weightage):
     concordance_thresholdValue = 0
     discordance_thresholdValue = 0
     normalised_matrix = []
@@ -295,4 +295,4 @@ def calculates(input_matrix, input_weightage, input_sign):
 
 
 if __name__ == '__main__':
-    calculates(test_matrix, test_weightage, test_sign)
+    calculates(test_matrix, test_weightage)

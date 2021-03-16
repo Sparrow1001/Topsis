@@ -102,15 +102,14 @@ def calculates(input_matrix, input_weightage, input_sign):
         pi.append(si_neg[i] / (si_pos[i] + si_neg[i]))
 
     K = len(pi)
-    print("\nКонечный список:")
-    print(pi)
+
 
     for i in range(K - 1):
         for j in range(K - i - 1):
             if pi[j] > pi[j + 1]:
                 pi[j], pi[j + 1] = pi[j + 1], pi[j]
 
-    print("\nКонечный список по убыванию:")
+    print("\nКонечный список:")
     print(list(reversed(pi)))
 
 
