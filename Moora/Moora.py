@@ -25,8 +25,6 @@ def calculates(input_matrix, input_weightage, input_sign):
     square_matrix = []
     sqrt_sum = []
     weighted_matrix = []
-    v_pos = []
-    v_neg = []
     pi = []
 
     print("Начальная матрица:")
