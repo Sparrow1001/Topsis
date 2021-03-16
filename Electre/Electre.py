@@ -11,8 +11,6 @@ test_matrix = [[250, 16, 12, 5, 1],
 
 test_weightage = [0.35, 0.25, 0.25, 0.15, 0.15]
 
-test_sign = [0.0, 1.0, 1.0, 1.0]
-
 
 # max - 1
 # min - 0
@@ -291,8 +289,6 @@ def calculates(input_matrix, input_weightage, input_sign):
     print(rank1)
     print("\ndiscordance rank:")
     print(rank2)
-
-
 
 
 
