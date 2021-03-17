@@ -3,15 +3,17 @@ import math
 M = int(input('число строк '))
 N = int(input('число столбцов '))
 
-test_matrix = [[250, 16, 12, 5],
-               [200, 16, 8, 3],
-               [300, 32, 16, 4],
-               [275, 32, 8, 4],
-               [225, 16, 16, 2]]
+test_matrix = [[250, 16, 12, 5, 1],
+               [200, 16, 8, 3, 2],
+               [300, 32, 16, 4, 3],
+               [275, 32, 8, 4, 4],
+               [225, 16, 16, 2, 5]]
 
-test_weightage = [0.35, 0.25, 0.25, 0.15]
 
-test_sign = [0.0, 1.0, 1.0, 1.0]
+
+test_weightage = [0.35, 0.25, 0.25, 0.15, 0.15]
+
+test_sign = [1.0, 0.0, 1.0, 1.0, 1.0]
 
 
 # max - 1
@@ -100,6 +102,9 @@ def calculates(input_matrix, input_weightage, input_sign):
 
     for i in range(len(si_neg)):
         pi.append(si_neg[i] / (si_pos[i] + si_neg[i]))
+
+    print("\nФинальная матрица")
+    print(pi)
 
     K = len(pi)
 

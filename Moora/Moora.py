@@ -3,15 +3,15 @@ import math
 M = int(input('число строк '))
 N = int(input('число столбцов '))
 
-test_matrix = [[60, 0.4, 2540, 500, 990],
-               [6.35, 0.15, 1016, 3000, 1041],
-               [6.8, 0.1, 1727.2, 1500, 1676],
-               [10, 0.2, 1000, 2000, 965],
-               [2.5, 0.1, 560, 500, 915],
-               [4.5, 0.08, 1016, 350, 508],
-               [3, 0.1, 177, 1000, 920]]
+test_matrix = [[250, 16, 12, 5, 1],
+               [200, 16, 8, 3, 2],
+               [300, 32, 16, 4, 3],
+               [275, 32, 8, 4, 4],
+               [225, 16, 16, 2, 5]]
 
-test_weightage = [0.1574, 0.1825, 0.2385, 0.2172, 0.2043]
+
+
+test_weightage = [0.35, 0.25, 0.25, 0.15, 0.15]
 
 test_sign = [1.0, 0.0, 1.0, 1.0, 1.0]
 
@@ -80,6 +80,15 @@ def calculates(input_matrix, input_weightage, input_sign):
     print("\nФинальная матрица")
     print(pi)
 
+    K = len(pi)
+
+    for i in range(K - 1):
+        for j in range(K - i - 1):
+            if pi[j] > pi[j + 1]:
+                pi[j], pi[j + 1] = pi[j + 1], pi[j]
+
+    print("\nКонечный список:")
+    print(list(reversed(pi)))
 
 if __name__ == '__main__':
     calculates(test_matrix, test_weightage, test_sign)
