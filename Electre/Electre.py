@@ -13,12 +13,14 @@ test_matrix = [[250, 16, 12, 5, 1],
 
 test_weightage = [0.35, 0.25, 0.25, 0.15, 0.15]
 
+test_sign = [1.0, 0.0, 1.0, 1.0, 1.0]
+
 
 # max - 1
 # min - 0
 
 
-def calculates(input_matrix, input_weightage):
+def calculates(input_matrix, input_weightage, input_sign):
     concordance_thresholdValue = 0
     discordance_thresholdValue = 0
     normalised_matrix = []
@@ -93,10 +95,16 @@ def calculates(input_matrix, input_weightage):
 
             for k in range(M):
                 if k != j:
-                    if temp1 >= weighted_matrix[i][k]:
-                        temp.append(1)
-                    else:
-                        temp.append(0)
+                    if input_sign[i] == 1.0:
+                        if temp1 >= weighted_matrix[i][k]:
+                            temp.append(1)
+                        else:
+                            temp.append(0)
+                    if input_sign[i] == 0.0:
+                        if temp1 <= weighted_matrix[i][k]:
+                            temp.append(1)
+                        else:
+                            temp.append(0)
         concordance_matrix.append(temp.copy())
         temp.clear()
 
@@ -297,4 +305,4 @@ def calculates(input_matrix, input_weightage):
 
 
 if __name__ == '__main__':
-    calculates(test_matrix, test_weightage)
+    calculates(test_matrix, test_weightage, test_sign)
