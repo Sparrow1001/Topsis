@@ -118,7 +118,7 @@ def calculates(input_matrix, input_weightage, input_sign):
             if pi[j] > pi[j + 1]:
                 pi[j], pi[j + 1] = pi[j + 1], pi[j]
 
-    print("\nКонечный список:")
+    print("\nСортированный список:")
     print(list(reversed(pi)))
 
 
